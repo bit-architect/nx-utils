@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "simple-import-sort"],
+  "plugins": ["@nrwl/nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -24,18 +24,12 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error"
-      }
+      "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
-      "rules": {
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error"
-      }
+      "rules": {}
     }
   ]
 }
