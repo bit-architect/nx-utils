@@ -8,6 +8,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/nest-generators",
+        "packageJson": "libs/nest-generators/package.json",
         "main": "libs/nest-generators/src/index.ts",
         "tsConfig": "libs/nest-generators/tsconfig.lib.json",
         "assets": [
