@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nest-generators",
+  "version": "0.0.1",
+  "generators": {
+    "libs": {
+      "factory": "./src/generators/libs/generator",
+      "schema": "./src/generators/libs/schema.json",
+      "description": "Create data, feature and utils libs"
+    }
+  }
+}
