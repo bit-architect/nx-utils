@@ -10,7 +10,10 @@
         "outputPath": "dist/libs/prettier-config",
         "main": "libs/prettier-config/src/index.ts",
         "tsConfig": "libs/prettier-config/tsconfig.lib.json",
-        "assets": ["libs/prettier-config/*.md"]
+        "assets": [
+          "libs/prettier-config/*.md",
+          "libs/prettier-config/src/prettier-config.json"
+        ]
       }
     },
     "publish": {
@@ -38,6 +41,14 @@
       "options": {
         "jestConfig": "libs/prettier-config/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
       }
     }
   },

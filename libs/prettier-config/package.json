@@ -1,5 +1,17 @@
 {
   "name": "@bit-architect/prettier-config",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./src/prettier-config.json",
+  "author": {
+    "name": "Johannes Schobel",
+    "email": "johannes.schobel@googlemail.com",
+    "url": "https://github.com/johannesschobel"
+  },
+  "peerDependencies": {
+    "prettier": "^2.7.1"
+  }
 }
