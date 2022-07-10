@@ -8,6 +8,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/prettier-config",
+        "packageJson": "libs/prettier-config/package.json",
         "main": "libs/prettier-config/src/index.ts",
         "tsConfig": "libs/prettier-config/tsconfig.lib.json",
         "assets": [
