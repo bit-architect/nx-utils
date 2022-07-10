@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bit-architect/nest-generators": ["libs/nest-generators/src/index.ts"]
+      "@bit-architect/nest-generators": ["libs/nest-generators/src/index.ts"],
+      "@bit-architect/prettier-config": ["libs/prettier-config/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
