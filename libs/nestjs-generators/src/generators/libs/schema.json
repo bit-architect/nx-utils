@@ -52,6 +52,11 @@
       "default": "util"
     },
 
+    "simpleName": {
+      "type": "boolean",
+      "description": "Use simpleName mode for generated libs",
+      "default": false
+    },
     "strict": {
       "type": "boolean",
       "description": "Use strict mode for generated libs",

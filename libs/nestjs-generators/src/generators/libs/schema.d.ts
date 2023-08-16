@@ -10,5 +10,6 @@ export interface LibsGeneratorSchema {
   featureLibName?: string;
   utilLibName?: string;
 
+  simpleName?: boolean;
   strict?: boolean;
 }

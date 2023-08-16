@@ -26,9 +26,9 @@ export async function libsGenerator(tree: Tree, options: LibsGeneratorSchema) {
     await libraryGenerator(tree, {
       name: options.dataLibName,
       directory: directory,
+      simpleName: options.simpleName,
       strict: options.strict,
       service: true,
-      simpleName: true,
       standaloneConfig: true,
     });
   }
@@ -37,9 +37,9 @@ export async function libsGenerator(tree: Tree, options: LibsGeneratorSchema) {
     await libraryGenerator(tree, {
       name: options.featureLibName,
       directory: directory,
+      simpleName: options.simpleName,
       strict: options.strict,
       controller: true,
-      simpleName: true,
       standaloneConfig: true,
     });
   }
@@ -48,8 +48,8 @@ export async function libsGenerator(tree: Tree, options: LibsGeneratorSchema) {
     await libraryGenerator(tree, {
       name: options.utilLibName,
       directory: directory,
+      simpleName: options.simpleName,
       strict: options.strict,
-      simpleName: true,
       standaloneConfig: true,
     });
   }
