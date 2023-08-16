@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "Libs",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the libraries",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for this new library?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the libs should be generated",
+      "alias": "d"
+    },
+
+    "createDataLib": {
+      "type": "boolean",
+      "description": "Create a data library for this feature",
+      "default": true
+    },
+    "dataLibName": {
+      "type": "string",
+      "description": "The name of the library to be used",
+      "default": "data"
+    },
+
+    "createFeatureLib": {
+      "type": "boolean",
+      "description": "Create a feature library for this feature",
+      "default": true
+    },
+    "featureLibName": {
+      "type": "string",
+      "description": "The name of the library to be used",
+      "default": "feature"
+    },
+
+    "createUtilLib": {
+      "type": "boolean",
+      "description": "Create a util library for this feature",
+      "default": true
+    },
+    "utilLibName": {
+      "type": "string",
+      "description": "The name of the library to be used",
+      "default": "util"
+    },
+
+    "strict": {
+      "type": "boolean",
+      "description": "Use strict mode for generated libs",
+      "default": true
+    }
+  },
+  "required": ["name"]
+}

@@ -1,0 +1,60 @@
+import { formatFiles, Tree } from '@nx/devkit';
+import * as path from 'path';
+import { LibsGeneratorSchema } from './schema';
+import { libraryGenerator } from '@nx/nest';
+
+function normalizeOptions(
+  tree: Tree,
+  options: LibsGeneratorSchema
+): LibsGeneratorSchema {
+  options.dataLibName = options.dataLibName || 'data';
+  options.featureLibName = options.featureLibName || 'feature';
+  options.utilLibName = options.utilLibName || 'util';
+
+  return options;
+}
+
+export async function libsGenerator(tree: Tree, options: LibsGeneratorSchema) {
+  options = normalizeOptions(tree, options);
+
+  let directory = path.join(options.name);
+  if (options.directory) {
+    directory = path.join(options.directory, options.name);
+  }
+
+  if (options.createDataLib) {
+    await libraryGenerator(tree, {
+      name: options.dataLibName,
+      directory: directory,
+      strict: options.strict,
+      service: true,
+      simpleName: true,
+      standaloneConfig: true,
+    });
+  }
+
+  if (options.createFeatureLib) {
+    await libraryGenerator(tree, {
+      name: options.featureLibName,
+      directory: directory,
+      strict: options.strict,
+      controller: true,
+      simpleName: true,
+      standaloneConfig: true,
+    });
+  }
+
+  if (options.createUtilLib) {
+    await libraryGenerator(tree, {
+      name: options.utilLibName,
+      directory: directory,
+      strict: options.strict,
+      simpleName: true,
+      standaloneConfig: true,
+    });
+  }
+
+  await formatFiles(tree);
+}
+
+export default libsGenerator;

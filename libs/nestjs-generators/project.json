@@ -42,7 +42,8 @@
       "options": {
         "lintFilePatterns": [
           "libs/nestjs-generators/**/*.ts",
-          "libs/nestjs-generators/package.json"
+          "libs/nestjs-generators/package.json",
+          "libs/nestjs-generators/generators.json"
         ]
       }
     },
