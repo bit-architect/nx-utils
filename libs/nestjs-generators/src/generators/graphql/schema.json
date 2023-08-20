@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "$id": "Libs",
+  "$id": "Graphql",
   "title": "",
   "type": "object",
   "properties": {

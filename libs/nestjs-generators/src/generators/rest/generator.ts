@@ -1,12 +1,12 @@
 import { formatFiles, Tree } from '@nx/devkit';
 import * as path from 'path';
-import { LibsGeneratorSchema } from './schema';
+import { RestGeneratorSchema } from './schema';
 import { libraryGenerator } from '@nx/nest';
 
 function normalizeOptions(
   tree: Tree,
-  options: LibsGeneratorSchema
-): LibsGeneratorSchema {
+  options: RestGeneratorSchema
+): RestGeneratorSchema {
   options.dataLibName = options.dataLibName || 'data';
   options.featureLibName = options.featureLibName || 'feature';
   options.utilLibName = options.utilLibName || 'util';
@@ -14,7 +14,7 @@ function normalizeOptions(
   return options;
 }
 
-export async function libsGenerator(tree: Tree, options: LibsGeneratorSchema) {
+export async function restGenerator(tree: Tree, options: RestGeneratorSchema) {
   options = normalizeOptions(tree, options);
 
   let directory = path.join(options.name);
@@ -57,4 +57,4 @@ export async function libsGenerator(tree: Tree, options: LibsGeneratorSchema) {
   await formatFiles(tree);
 }
 
-export default libsGenerator;
+export default restGenerator;

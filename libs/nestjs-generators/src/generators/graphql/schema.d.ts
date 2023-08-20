@@ -1,4 +1,4 @@
-export interface LibsGeneratorSchema {
+export interface GraphqlGeneratorSchema {
   name: string;
   directory?: string;
 
