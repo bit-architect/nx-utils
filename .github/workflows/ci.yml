@@ -48,7 +48,7 @@ jobs:
           nx-key: build
 
       - name: Build
-        uses: mansagroup/nrwl-nx-action@v2
+        uses: mansagroup/nrwl-nx-action@v3
         with:
           targets: build
           parallel: 'true'
