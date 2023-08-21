@@ -2,87 +2,70 @@ import { formatFiles, names, Tree } from '@nx/devkit';
 import * as path from 'path';
 import { GraphqlGeneratorSchema } from './schema';
 import { libraryGenerator, resolverGenerator } from '@nx/nest';
-
-interface NormalizedOptions {
-  name: string;
-  directory?: string;
-
-  createDataLib: boolean;
-  createFeatureLib: boolean;
-  createUtilLib: boolean;
-
-  dataLibName?: string;
-  featureLibName?: string;
-  utilLibName?: string;
-
-  simpleName?: boolean;
-  strict?: boolean;
-
-  projectName: string;
-}
+import { getProjectName } from '../../utils';
 
 function normalizeOptions(
   tree: Tree,
   options: GraphqlGeneratorSchema
-): NormalizedOptions {
+): GraphqlGeneratorSchema {
   options.dataLibName = options.dataLibName || 'data';
   options.featureLibName = options.featureLibName || 'feature';
   options.utilLibName = options.utilLibName || 'util';
 
-  const fullProjectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${options.name}`
-    : options.name;
-
-  const projectName = fullProjectDirectory.replace(new RegExp('/', 'g'), '-');
-
-  return { ...options, projectName };
+  return { ...options };
 }
 
 export async function graphqlGenerator(
   tree: Tree,
   options: GraphqlGeneratorSchema
 ) {
-  const normalizedOptions = normalizeOptions(tree, options);
+  options = normalizeOptions(tree, options);
 
-  let directory = path.join(normalizedOptions.name);
-  if (normalizedOptions.directory) {
-    directory = path.join(normalizedOptions.directory, normalizedOptions.name);
+  let directory = path.join(options.name);
+  if (options.directory) {
+    directory = path.join(options.directory, options.name);
   }
 
-  if (normalizedOptions.createDataLib) {
+  if (options.createDataLib) {
     await libraryGenerator(tree, {
-      name: normalizedOptions.dataLibName,
+      name: options.dataLibName,
       directory: directory,
-      simpleName: normalizedOptions.simpleName,
-      strict: normalizedOptions.strict,
+      simpleName: options.simpleName,
+      strict: options.strict,
       service: true,
       standaloneConfig: true,
     });
   }
 
-  if (normalizedOptions.createFeatureLib) {
+  if (options.createFeatureLib) {
+    const projectName = getProjectName(
+      options.name,
+      options.featureLibName,
+      options.directory
+    );
+
     await libraryGenerator(tree, {
-      name: normalizedOptions.featureLibName,
+      name: options.featureLibName,
       directory: directory,
-      simpleName: normalizedOptions.simpleName,
-      strict: normalizedOptions.strict,
+      simpleName: options.simpleName,
+      strict: options.strict,
       standaloneConfig: true,
     });
 
     await resolverGenerator(tree, {
-      name: `${normalizedOptions.name}-${normalizedOptions.featureLibName}`,
-      project: `${normalizedOptions.projectName}-${normalizedOptions.featureLibName}`,
+      name: `${options.name}-${options.featureLibName}`,
+      project: projectName,
       flat: true,
       directory: 'lib',
     });
   }
 
-  if (normalizedOptions.createUtilLib) {
+  if (options.createUtilLib) {
     await libraryGenerator(tree, {
-      name: normalizedOptions.utilLibName,
+      name: options.utilLibName,
       directory: directory,
-      simpleName: normalizedOptions.simpleName,
-      strict: normalizedOptions.strict,
+      simpleName: options.simpleName,
+      strict: options.strict,
       standaloneConfig: true,
     });
   }
