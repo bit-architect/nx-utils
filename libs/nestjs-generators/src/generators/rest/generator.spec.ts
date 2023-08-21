@@ -6,15 +6,28 @@ import { RestGeneratorSchema } from './schema';
 
 describe('libs generator', () => {
   let tree: Tree;
-  const options: RestGeneratorSchema = { name: 'test' };
+  const options: RestGeneratorSchema = {
+    name: 'test',
+    directory: 'api',
+
+    createDataLib: true,
+    createFeatureLib: true,
+    createUtilLib: true,
+  };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
   });
 
-  it('should run successfully', async () => {
+  it('should generate all libs', async () => {
     await restGenerator(tree, options);
-    const config = readProjectConfiguration(tree, 'test');
-    expect(config).toBeDefined();
+
+    const configData = readProjectConfiguration(tree, 'api-test-data');
+    const configFeature = readProjectConfiguration(tree, 'api-test-feature');
+    const configUtil = readProjectConfiguration(tree, 'api-test-util');
+
+    expect(configData).toBeDefined();
+    expect(configFeature).toBeDefined();
+    expect(configUtil).toBeDefined();
   });
 });
