@@ -17,7 +17,8 @@
     "paths": {
       "@bit-architect/nestjs-generators": [
         "libs/nestjs-generators/src/index.ts"
-      ]
+      ],
+      "@bit-architect/nestjs-paginator": ["libs/nestjs-paginator/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
