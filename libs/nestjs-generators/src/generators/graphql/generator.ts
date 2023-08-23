@@ -1,4 +1,4 @@
-import { formatFiles, names, Tree } from '@nx/devkit';
+import { formatFiles, Tree } from '@nx/devkit';
 import * as path from 'path';
 import { GraphqlGeneratorSchema } from './schema';
 import { libraryGenerator, resolverGenerator } from '@nx/nest';
