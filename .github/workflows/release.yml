@@ -1,0 +1,43 @@
+name: Release Project
+on:
+  workflow_dispatch: # manual release
+    inputs:
+      project:
+        type: choice
+        description: Project to Release
+        options:
+          - nestjs-generators
+          - nestjs-paginator
+
+jobs:
+  npm:
+    name: Release ${{ github.event.inputs.project }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch latest base branch
+        run: git fetch origin main
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Setup NPM
+        uses: ng-easy/npm-setup@v3
+
+      - name: Build Package
+        run: npx nx run ${{ github.event.inputs.project }}:build
+
+      - name: Release Package
+        run: npx nx run ${{ github.event.inputs.project }}:release
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
