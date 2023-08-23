@@ -46,6 +46,7 @@
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
+        "outputPath": "dist/libs/nestjs-paginator",
         "github": true,
         "changelog": true,
         "npm": true,
