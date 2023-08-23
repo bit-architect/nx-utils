@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/bit-architect/nx-utils/compare/nestjs-paginator-v1.0.2...nestjs-paginator-v1.0.3) (2023-08-23)
+
+
+### Bug Fixes
+
+* **nests-paginator:** fix ([a4c39e5](https://github.com/bit-architect/nx-utils/commit/a4c39e5e1b99123ca9512924a1ff3181dde2b8d5))
+
 ## [1.0.2](https://github.com/bit-architect/nx-utils/compare/nestjs-paginator-v1.0.1...nestjs-paginator-v1.0.2) (2023-08-23)
 
 
