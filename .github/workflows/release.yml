@@ -35,9 +35,14 @@ jobs:
       - name: Build Package
         run: npx nx run ${{ github.event.inputs.project }}:build
 
-      - name: Release Package
-        run: npx nx run ${{ github.event.inputs.project }}:release
+      # - name: Release Package
+      #   run: npx nx run ${{ github.event.inputs.project }}:release
+      #   env:
+      #     CI: true
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - run: npx nx run ${{ github.event.inputs.project }}:semantic-release
         env:
-          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
