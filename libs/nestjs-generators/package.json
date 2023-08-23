@@ -10,7 +10,9 @@
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "generators": "./generators.json",
+  "private": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
