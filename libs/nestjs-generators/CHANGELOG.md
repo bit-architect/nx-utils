@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bit-architect/nx-utils/compare/nestjs-generators-v1.0.0...nestjs-generators-v1.1.0) (2023-09-20)
+
+
+### Features
+
+* new generator ([0feb834](https://github.com/bit-architect/nx-utils/commit/0feb834dfc8eb7d955b32d01f7dd7411826a285a))
+
 # 1.0.0 (2023-08-23)
 
 
