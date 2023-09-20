@@ -9,6 +9,11 @@
       "factory": "./src/generators/graphql/generator",
       "schema": "./src/generators/graphql/schema.json",
       "description": "Generator to bootstrap GraphQL libs"
+    },
+    "porto": {
+      "factory": "./src/generators/porto/generator",
+      "schema": "./src/generators/porto/schema.json",
+      "description": "Generator to bootstrap RESTful Porto libs"
     }
   }
 }
