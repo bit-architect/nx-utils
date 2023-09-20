@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bit-architect/nx-utils/compare/nestjs-generators-v1.1.0...nestjs-generators-v1.1.1) (2023-09-20)
+
+
+### Bug Fixes
+
+* adapt rest generator ([e049a5d](https://github.com/bit-architect/nx-utils/commit/e049a5d061dff88b6f6a83153add79704acd4fd1))
+
 # [1.1.0](https://github.com/bit-architect/nx-utils/compare/nestjs-generators-v1.0.0...nestjs-generators-v1.1.0) (2023-09-20)
 
 
