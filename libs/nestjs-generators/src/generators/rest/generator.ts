@@ -1,7 +1,12 @@
 import { formatFiles, Tree } from '@nx/devkit';
 import * as path from 'path';
 import { RestGeneratorSchema } from './schema';
-import { libraryGenerator } from '@nx/nest';
+import {
+  controllerGenerator,
+  libraryGenerator,
+  serviceGenerator,
+} from '@nx/nest';
+import { getProjectName } from '../../utils';
 
 function normalizeOptions(
   tree: Tree,
@@ -23,24 +28,48 @@ export async function restGenerator(tree: Tree, options: RestGeneratorSchema) {
   }
 
   if (options.createDataLib) {
+    const projectName = getProjectName(
+      options.name,
+      options.dataLibName,
+      options.directory
+    );
+
     await libraryGenerator(tree, {
       name: options.dataLibName,
       directory: directory,
       simpleName: options.simpleName,
       strict: options.strict,
-      service: true,
       standaloneConfig: true,
+    });
+
+    await serviceGenerator(tree, {
+      name: `${options.name}-${options.featureLibName}`,
+      project: projectName,
+      flat: true,
+      directory: path.join('lib', 'services'),
     });
   }
 
   if (options.createFeatureLib) {
+    const projectName = getProjectName(
+      options.name,
+      options.featureLibName,
+      options.directory
+    );
+
     await libraryGenerator(tree, {
       name: options.featureLibName,
       directory: directory,
       simpleName: options.simpleName,
       strict: options.strict,
-      controller: true,
       standaloneConfig: true,
+    });
+
+    await controllerGenerator(tree, {
+      name: `${options.name}-${options.featureLibName}`,
+      project: projectName,
+      flat: true,
+      directory: path.join('lib', 'controllers'),
     });
   }
 
